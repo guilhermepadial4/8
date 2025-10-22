@@ -1,0 +1,632 @@
+/* ==========================================
+   RESET E VARIÁVEIS
+   ========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Cores principais */
+  --primary-pink: #ec4899;
+  --light-pink: #fce7f3;
+  --medium-pink: #fbcfe8;
+  --dark-pink: #be185d;
+  --rose: #f9a8d4;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --white: #ffffff;
+  --shadow: 0 10px 25px rgba(236, 72, 153, 0.1);
+  --shadow-lg: 0 20px 40px rgba(236, 72, 153, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 50%, #f9a8d4 100%);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   BACKGROUND GRADIENT
+   ========================================== */
+
+.background-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 50%, #f9a8d4 100%);
+  z-index: -2;
+}
+
+/* ==========================================
+   ANIMAÇÕES CSS
+   ========================================== */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-30px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.3);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-gentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Classes de animação */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ==========================================
+   CORAÇÕES FLUTUANTES
+   ========================================== */
+
+.floating-hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: float 8s ease-in infinite;
+  bottom: -50px;
+}
+
+/* ==========================================
+   CONFETE
+   ========================================== */
+
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.confetti {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: float 5s ease-in forwards;
+  top: -30px;
+}
+
+/* ==========================================
+   CONTEÚDO PRINCIPAL
+   ========================================== */
+
+.content {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.header {
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+
+.title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  color: var(--dark-pink);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   CONTADOR DE TEMPO
+   ========================================== */
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.timer-box {
+  background: var(--white);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  min-width: 80px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 2px solid #fbcfe8;
+  transition: all 0.3s ease;
+}
+
+.timer-box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.timer-value {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #ec4899 0%, #f9a8d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.timer-label {
+  font-size: 0.75rem;
+  color: var(--primary-pink);
+  font-weight: 600;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   CARTÕES DE MENSAGEM
+   ========================================== */
+
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 3rem 0;
+  padding: 0 1rem;
+}
+
+.message-card {
+  background: var(--white);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 2px solid #fbcfe8;
+  display: flex;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.message-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.message-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.message-content {
+  flex: 1;
+}
+
+.message-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  color: var(--primary-pink);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.message-text {
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ==========================================
+   GALERIA DE MOMENTOS
+   ========================================== */
+
+.gallery-section {
+  margin: 3rem 0;
+  padding: 0 1rem;
+}
+
+.gallery-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  text-align: center;
+  color: var(--primary-pink);
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-card {
+  background: var(--white);
+  border-radius: 0.75rem;
+  padding: 1.5rem; /* <-- AJUSTADO */
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 2px solid #fbcfe8;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; <-- REMOVIDO para fluxo natural */
+  /* min-height: 250px; <-- REMOVIDO para altura automática */
+}
+
+.gallery-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.gallery-card:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery-card:hover .gallery-emoji {
+  animation: bounce-gentle 2s ease-in-out infinite;
+  transform: scale(1.2);
+}
+
+.gallery-card:hover::after {
+  animation: shimmer 2s infinite;
+}
+
+.gallery-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  background-size: 200% 100%;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* ===== CORREÇÃO DA IMAGEM ===== */
+.gallery-card img {
+  width: 100%;
+  height: 200px; /* Altura fixa para todas as imagens */
+  object-fit: cover; /* Cobre o espaço sem distorcer */
+  border-radius: 0.5rem;
+  margin: 1rem 0; /* Espaço entre título e descrição */
+  position: relative;
+  z-index: 2;
+}
+/* ================================ */
+
+.gallery-emoji {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.gallery-card-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  color: var(--primary-pink);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+.gallery-card-description {
+  color: var(--primary-pink);
+  font-size: 0.85rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+.footer-hearts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.heart-icon {
+  font-size: 1.5rem;
+  display: inline-block;
+}
+
+.footer-text {
+  color: var(--primary-pink);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.footer-credit {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+  }
+
+  .header {
+    padding: 1rem 0 0.5rem;
+  }
+
+  .timer-container {
+    gap: 0.75rem;
+  }
+
+  .timer-box {
+    min-width: 70px;
+    padding: 1rem;
+  }
+
+  .message-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .gallery-card {
+    /* min-height: 200px; <-- Removido */
+    padding: 1.5rem;
+  }
+
+  /* Ajuste da imagem em telas menores */
+  .gallery-card img {
+    height: 150px;
+  }
+
+  .gallery-emoji {
+    font-size: 2.5rem;
+  }
+
+  .floating-heart {
+    font-size: 2rem;
+  }
+
+  .confetti {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 0.75rem;
+  }
+
+  .title {
+    margin-bottom: 0.25rem;
+  }
+
+  .timer-container {
+    gap: 0.5rem;
+  }
+
+  .timer-box {
+    min-width: 60px;
+    padding: 0.75rem;
+  }
+
+  .timer-value {
+    font-size: 1.5rem;
+  }
+
+  .timer-label {
+    font-size: 0.7rem;
+  }
+
+  .message-card {
+    padding: 1rem;
+  }
+
+  .message-icon {
+    font-size: 1.5rem;
+  }
+
+  .message-title {
+    font-size: 1rem;
+  }
+
+  .message-text {
+    font-size: 0.9rem;
+  }
+
+  .gallery-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Ajuste da imagem em telas pequenas */
+  .gallery-card img {
+    height: 180px; /* Um pouco mais de altura em coluna única */
+  }
+
+  .gallery-emoji {
+    font-size: 2rem;
+  }
+
+  .footer-hearts {
+    gap: 0.5rem;
+  }
+
+  .heart-icon {
+    font-size: 1.25rem;
+  }
+}
+
+/* ==========================================
+   FONTS
+   ========================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap");
